@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опрос</title>
+    <link rel="stylesheet" href="/static/css/polls_app/polls_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ question.text }}</h1>
+        <form method="post" action="{% url 'results' %}">
+            {% csrf_token %}
+            <label>Укажите размер вашей площади:</label>
+            <input type="text" name="area_size" required><br>
+            <label>Количество посадочных мест:</label>
+            <input type="text" name="seating_capacity" required><br>
+            <label>Площадь залов для посетителей:</label>
+            <input type="text" name="hall_area" required><br>
+            <label>Площадь кухни:</label>
+            <input type="text" name="kitchen_area" required><br>
+            <button type="submit">Далее</button>
+        </form>
+    </div>
+</body>
+</html>

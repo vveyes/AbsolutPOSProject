@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опрос</title>
+    <link rel="stylesheet" href="/static/css/polls_app/polls_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ question.text }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% if answers %}
+                {% for answer in answers %}
+                    <label>
+                        <input type="radio" name="answer_id" value="{{ answer.id }}"> 
+                        {{ answer.text }}
+                    </label><br>
+                {% endfor %}
+            {% else %}
+                <p>Ответы на этот вопрос не доступны.</p>
+            {% endif %}
+            <button type="submit">Далее</button>
+        </form>
+    </div>
+</body>
+</html>

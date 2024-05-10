@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/polls_app/results.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Результаты</h1>
+        
+        <h2>Вопросы и ответы</h2>
+        <ul>
+            {% for select in selected_answers %}
+            <li>
+                {% if select.question %}
+                    <strong>{{select.question}}</strong>
+                {% elif select.answer %}
+                    {{select.answer}}.
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        
+        <h2>Размеры помещений</h2>
+        <p><strong>Размер площади:</strong> {{ area_size }} кв.м.</p>
+        <p><strong>Количество посадочных мест:</strong> {{ seating_capacity }}.</p>
+        <p><strong>Площадь залов для посетителей:</strong> {{ hall_area }} кв.м.</p>
+        <p><strong>Площадь кухни:</strong> {{ kitchen_area }} кв.м.</p>
+    </div>
+</body>
+</html>
